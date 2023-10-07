@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h1>Categoría: {{ categoria.nombre }}</h1>
+    <div class="row">
+        {% for producto in productos %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <a href="{% url 'tienda:producto' producto.id %}">
+                    <img class="card-img-top" src="http://placehold.it/700x400" alt="{{ producto.nombre }}"></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'tienda:producto' producto.id %}">{{ producto.nombre }}</a>
+                    </h4>
+                    <h5>Precio: S/ {{ producto.precio }}</h5>
+                    <p class="card-text">Categoria: {{ producto.categoria.nombre }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
